@@ -73,4 +73,4 @@ When using public Wi-Fi in a café, I may send traffic over a network that other
 
 
 
-What surprised me most was that the entire HTTP login — including the password, session cookie, and dashboard information — could be read directly from the stream. HTTPS did not make the connection invisible, because the IP addresses, port, timing, packet sizes, and server name were still observable, but it prevented the sensitive application contents from being read.
+What surprised me most was that the entire HTTP login including the password, session cookie, and dashboard information could be read directly from the stream. HTTPS did not make the connection invisible, because the IP addresses, port, timing, packet sizes, and server name were still observable, but it prevented the sensitive application contents from being read.
