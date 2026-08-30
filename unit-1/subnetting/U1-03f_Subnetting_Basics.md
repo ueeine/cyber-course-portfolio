@@ -1,4 +1,3 @@
-[Subnetting_Basics_Assignment.md](https://github.com/user-attachments/files/31611258/Subnetting_Basics_Assignment.md)
 # Subnetting Basics Assignment
 
 ## Task 1 - Binary ↔ decimal for a single octet
