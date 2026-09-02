@@ -1,11 +1,5 @@
 # Linux CLI Basics
 
-**Goal:** Get comfortable with the everyday Debian command line — moving around, handling files, viewing and searching content, redirection, permissions, processes, networking, and installing packages.
-**Source:** U1-05 Linux CLI Basics assignment
-**Environment:** Debian 13 (trixie) via WSL2, user: ueeine, host: dolma
-
----
-
 ## Part 1 — Getting your bearings
 
 ### Q1 — What username are you logged in as?
