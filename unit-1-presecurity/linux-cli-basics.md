@@ -20,7 +20,7 @@ Output:
 ueeine
 ```
 
-**Answer:** ueeine.
+**Answer:** ueeine
 
 ### Q2 — Are you a member of the sudo group? How can you tell from the output of id?
 
@@ -34,7 +34,7 @@ Output:
 uid=1000(ueeine) gid=1000(ueeine) groups=1000(ueeine),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
 ```
 
-**Answer:** Yes — `27(sudo)` appears in the `groups=` list, confirming membership in the sudo group.
+**Answer:** Yep. `27(sudo)` shows up in the groups list so I'm in.
 
 ### Q3 — What kernel version is your system running?
 
@@ -48,7 +48,7 @@ Output:
 Linux dolma 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 GNU/Linux
 ```
 
-**Answer:** 6.18.33.2-microsoft-standard-WSL2 (running under WSL2 rather than a standalone Hyper-V VM).
+**Answer:** 6.18.33.2-microsoft-standard-WSL2. The "microsoft-standard-WSL2" bit gives away that it's WSL2, not a regular VM.
 
 ### Q4 — What is the difference in the depth of information whatis and man give you?
 
@@ -64,11 +64,11 @@ whoami (1)           - print effective user name
 ```
 (man opened the full manual page: NAME, SYNOPSIS, DESCRIPTION, options, AUTHOR, REPORTING BUGS, SEE ALSO)
 
-**Answer:** `whatis` is a one-line summary pulled straight from the man page. `man` is the full manual — description, every flag, and related commands. `whatis` is a reminder; `man` is the reference.
+**Answer:** whatis just gives you the one-liner off the top of the man page, basically a quick reminder of what a command does. man is the whole document — every flag, examples if there are any, related commands, all of it. If you already kind of know the command, whatis. If you need to actually learn it, man.
 
 ### Q5 — While in man, how do you (a) search for "user" and (b) quit?
 
-**Answer:** Type `/user` and press Enter to jump to the first match, `n` to jump to the next match. Press `q` to quit.
+**Answer:** `/user` then Enter jumps to the first hit, `n` goes to the next one. `q` quits out.
 
 ---
 
@@ -103,7 +103,7 @@ Output:
 /
 ```
 
-**Answer:** `cd -` returned to the previous working directory and printed the resulting path — useful for bouncing between two locations without retyping the full path.
+**Answer:** It jumped back to whatever directory I was in before (`/`) and printed the path. Handy for bouncing between two spots without typing the whole path again.
 
 ### Q7 — What additional information does -l give you over plain ls?
 
@@ -119,7 +119,7 @@ drwxr-xr-x 2 root root    4096 May 16 16:32 alternatives
 drwxr-xr-x 3 root root    4096 Sep  2 21:34 apparmor.d
 ```
 
-**Answer:** `-l` shows the long format — permissions, link count, owner, group, size, and last-modified date/time — on top of the filename. Plain `ls` is just names in a grid.
+**Answer:** Regular `ls` is just names in a grid. `-l` adds permissions, number of links, owner, group, size, and when it was last modified.
 
 ### Q8 — What does -a show that wasn't visible before? Name two examples.
 
@@ -136,7 +136,7 @@ drwxr-xr-x 18 root root    4096 Sep  2 21:20 ..
 -rw-r--r--  1 root root     208 May 16 16:31 .updated
 ```
 
-**Answer:** Hidden entries — anything starting with a dot — plus `.` and `..` for the current and parent directory. Two examples found in `/etc`: `.pwd.lock` and `.updated`.
+**Answer:** Dotfiles — anything starting with a period gets hidden by default — plus `.` and `..`. In `/etc` I could see `.pwd.lock` and `.updated`, neither of which show up without `-a`.
 
 ### Q9 — What is the largest file in /var/log? What size is it?
 
@@ -159,7 +159,7 @@ lrwxrwxrwx  1 root root              39 May 16 16:31 README -> ../../usr/share/d
 -rw-rw-r--  1 root utmp             384 Sep  2 21:20 wtmp
 ```
 
-**Answer:** `dpkg.log`, at 31K.
+**Answer:** dpkg.log at 31K, by a wide margin.
 
 ### Q10 — What was modified most recently?
 
@@ -182,7 +182,7 @@ lrwxrwxrwx  1 root root               39 May 16 16:31 README -> ../../usr/share/
 -rw-rw-r--  1 root utmp                0 May 16 16:31 lastlog
 ```
 
-**Answer:** `dpkg.log`, timestamped Sep 2 23:43 — it sorts to the top since `-t` orders newest-first by modification time.
+**Answer:** dpkg.log again, Sep 2 23:43. `-t` sorts by mod time newest-first so it floats to the top.
 
 ---
 
@@ -195,7 +195,7 @@ Command:
 $ mkdir -p ~/cyber-course/unit1 ~/cyber-course/unit2 ~/cyber-course/unit3/{osint,recon,crypto} ~/cyber-course/scratch
 ```
 
-**Answer:** One line, using brace expansion for the three subfolders under `unit3` to avoid three separate `mkdir` calls.
+**Answer:** Did it in one line using brace expansion for the three unit3 subfolders instead of running mkdir three separate times.
 
 File creation and moves:
 ```
@@ -230,7 +230,7 @@ This is my first file edited from the Linux command line.
 Today I learned that mv is also rename, and that nano shows shortcuts at the bottom.
 ```
 
-**Answer:** `Ctrl+O` (Write Out) to save — confirms the filename, then Enter. `Ctrl+X` to exit.
+**Answer:** Ctrl+O to write out (it'll ask you to confirm the filename, hit Enter), Ctrl+X to exit.
 
 ### Q13 — Why did rmdir fail (or succeed)?
 
@@ -244,9 +244,7 @@ Output:
 rmdir: failed to remove '/home/ueeine/cyber-course/scratch': Directory not empty
 ```
 
-**Answer:** `rmdir` only removes directories that are completely empty. At this point `scratch/` still contained `notes.txt`, so it errored out with "Directory not empty."
-
-To actually clear it out:
+**Answer:** rmdir refuses to touch anything that isn't completely empty, and scratch/ still had notes.txt sitting in it. Had to use rm -r instead to actually clear it:
 ```
 $ rm -r ~/cyber-course/scratch
 ```
@@ -276,7 +274,7 @@ SUPPORT_URL="https://www.debian.org/support"
 BUG_REPORT_URL="https://bugs.debian.org/"
 ```
 
-**Answer:** Debian GNU/Linux 13 (trixie).
+**Answer:** Debian GNU/Linux 13, trixie.
 
 Also practiced:
 ```
@@ -296,7 +294,7 @@ Output of head:
 
 ### Q15 — What kind of messages do you see? Are they recent?
 
-Note: this system has no `/var/log/syslog` (WSL2 uses systemd's journal instead — `/var/log` only contains `dpkg.log`, `alternatives.log`, and the `journal/` directory). Used `journalctl` in its place.
+Note: this system doesn't have a `/var/log/syslog` at all — WSL2 uses systemd's journal instead, so `/var/log` only has `dpkg.log`, `alternatives.log`, and the `journal/` folder. Had to use `journalctl` instead of the commands the assignment expected.
 
 Command:
 ```
@@ -317,7 +315,7 @@ Sep 03 00:05:30 dolma sudo[1575]:   ueeine : TTY=pts/2 ; USER=root ; COMMAND=/us
 Sep 03 00:05:30 dolma sudo[1575]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
 ```
 
-**Answer:** Mostly routine system activity — sudo session opens/closes, a kernel cache-drop notice, and a scheduled `dpkg-db-backup.service` run, each timestamped. Yes, they're recent — entries span Sep 2 23:43 through Sep 3 00:05, right up to when the command was run.
+**Answer:** Pretty mundane stuff — sudo sessions opening and closing, a kernel message about dropping caches, and a scheduled dpkg backup job. And yeah, all recent, the timestamps run from 23:43 up to basically the moment I ran the command.
 
 ---
 
@@ -337,7 +335,7 @@ ssh             22/tcp                          # SSH Remote Login Protocol
 1
 ```
 
-**Answer:** 1 line.
+**Answer:** 1
 
 ### Search for "error" (case-insensitive) — substituted for syslog since it doesn't exist on this system
 
@@ -365,9 +363,9 @@ Output:
 /etc/resolv.conf
 /etc/ld.so.conf.d/ld.wsl.conf
 ```
-(ran with `sudo` to avoid `Permission denied` errors on restricted directories like `/etc/ssl/private` and `/etc/credstore`)
+(ran with sudo since some directories like /etc/ssl/private and /etc/credstore threw Permission denied otherwise)
 
-**Answer:** `-mtime -7` restricts results to files modified less than 7 days ago.
+**Answer:** Add `-mtime -7` and it only shows files touched in the last week.
 
 ### Q18 — Where are these commands actually located on the filesystem?
 
@@ -383,7 +381,7 @@ Output:
 /usr/bin/nano
 ```
 
-**Answer:** `/usr/bin/ls` and `/usr/bin/nano`.
+**Answer:** /usr/bin/ls and /usr/bin/nano.
 
 ---
 
@@ -396,7 +394,7 @@ Command:
 $ history | tail -n 20
 ```
 
-**Answer:** `|` is a pipe — it feeds the output of the command on the left as input to the command on the right, letting commands chain together instead of dumping to the screen or a temp file.
+**Answer:** Pipes the output of one command straight into the next one as input, so you can chain stuff together instead of it just printing to the screen.
 
 ### Q20 — What is the difference between > and >>?
 
@@ -430,7 +428,7 @@ Output (second cat, after `date >>`):
 Thu Sep  3 12:11:33 AM EEST 2026
 ```
 
-**Answer:** `>` overwrites the file with just the new output. `>>` appends new output to the end, leaving what's already there intact — confirmed since the second `cat` showed the original listing plus the `date` output tacked on.
+**Answer:** `>` blows away whatever's in the file and writes fresh. `>>` tacks new output onto the end without touching what's already there — you can see that in the second cat, the original listing is still intact with the date line just added below it.
 
 ### Q21 — What was the output, and why?
 
@@ -445,13 +443,13 @@ Output:
 hello cyber world
 ```
 
-**Answer:** `hello cyber world` — `echo` prints that literal string, and since it contains "cyber," `grep` lets the whole line through unchanged.
+**Answer:** "hello cyber world" comes out because echo prints that string as-is, and it contains "cyber" so grep lets it through.
 
 ### clear vs Ctrl+L
 
 Ran `clear`, then `Ctrl+L` on a new line.
 
-**Answer:** Both wipe the visible screen, but `Ctrl+L` is a built-in shortcut the terminal handles directly, while `clear` launches a small external program to do the same thing. Neither actually deletes scrollback history — it's just scrolled out of view.
+**Answer:** Same visible result, different mechanism — Ctrl+L is handled by the terminal itself, clear is an actual separate program that does the same job. Either way your scrollback is still there, it's just pushed out of view.
 
 ---
 
@@ -495,7 +493,7 @@ drwxr-xr-x 2 ueeine ueeine 4096 Sep  3 00:12 unit1
 
 ### Q22 — Confirm with ls -la that the extraction worked. What did you find inside?
 
-**Answer:** Yes — extraction worked, recreating the `unit1/` folder with `intro.txt` inside (confirmed by the `inflating: unit1/intro.txt` message and the `unit1` directory appearing in `ls -la`).
+**Answer:** Worked fine — the unit1/ folder came back with intro.txt inside it, same as it went in.
 
 Command:
 ```
@@ -512,7 +510,7 @@ drwxr-xr-x ueeine/ueeine     0 2026-09-02 21:38 unit2/
 
 ### Q23 — What do the flags c, z, v, and f each mean?
 
-**Answer:** `c` creates a new archive, `z` runs it through gzip compression, `v` makes it verbose (listing each file as it's processed), and `f` tells tar the very next argument is the archive filename to use.
+**Answer:** c = create, z = gzip it, v = verbose so it lists files as it goes, f = the next thing on the command line is the archive filename.
 
 ---
 
@@ -532,7 +530,7 @@ Output:
 
 ### Q24 — Paste the permission string. Can the owner execute the file?
 
-**Answer:** `-rw-r--r--` — the owner can read and write, but there's no `x`, so execution isn't possible yet.
+**Answer:** `-rw-r--r--`. No x anywhere, so no, can't execute it yet.
 
 Content added via nano:
 ```
@@ -552,7 +550,7 @@ Output:
 
 ### Q25 — What happened, and why?
 
-**Answer:** It failed with "Permission denied." The script content was correct (shebang and all), but without the execute bit set, the shell won't treat it as a runnable program no matter what's inside.
+**Answer:** Permission denied. Doesn't matter that the script itself is fine with a proper shebang — without the execute bit the shell just won't run it.
 
 Command:
 ```
@@ -569,7 +567,7 @@ Hello from my first script
 
 ### Q26 — What does the new permission string look like? Did the script run this time?
 
-**Answer:** `-rwxr--r--` — the `x` now appears in the owner slot. Yes, it ran this time and printed "Hello from my first script."
+**Answer:** `-rwxr--r--`, x is there now in the owner spot. And yes, ran fine, printed "Hello from my first script."
 
 Command:
 ```
@@ -584,7 +582,7 @@ Output:
 
 ### Q27 — What does 700 mean in plain language?
 
-**Answer:** The owner gets full access — read, write, execute (the 7). Group and everyone else get nothing at all (the two 0s). It's mine alone to open, edit, or run.
+**Answer:** Owner (me) can read, write, and execute — that's the 7. Everyone else, group included, gets zero access at all.
 
 ---
 
@@ -611,9 +609,9 @@ root         142  0.0  0.0  18684  9052 ?        Ss   Sep02   0:00 /usr/lib/syst
 root         175  0.0  0.0   8168  2720 tty1     Ss+  Sep02   0:00 /sbin/agetty -o -- \u --noreset --noclear - linux
 ```
 
-**Answer:** Whoever started or owns that process — mostly `root` for system-level services (init, systemd-journald, cron), with `message+` for the dbus daemon (a dedicated service account).
+**Answer:** Whoever owns/started the process. Mostly root since these are all system services, and message+ for the dbus daemon which runs under its own dedicated account.
 
-Also ran `top`, sorted by memory (M) and CPU (P), then quit with `q`.
+Also ran top, sorted by memory and CPU, quit with q.
 
 ### Q29 — How much disk space is your cyber-course directory using?
 
@@ -644,7 +642,7 @@ Mem:            15Gi       541Mi        15Gi       3.4Mi       179Mi        14Gi
 Swap:          4.0Gi          0B       4.0Gi
 ```
 
-**Answer:** 15Gi total RAM, with 541Mi currently used.
+**Answer:** 15Gi total, only 541Mi actually used right now.
 
 ---
 
@@ -664,7 +662,7 @@ Output (excerpt):
     inet 172.31.196.154/20 brd 172.31.207.255 scope global eth0
 ```
 
-**Answer:** 172.31.196.154 on `eth0` (WSL2's internal virtual network interface — a private, non-externally-routable address).
+**Answer:** 172.31.196.154 on eth0 — that's WSL2's internal virtual adapter, not something reachable from outside.
 
 ### Q32 — Did both succeed? If one failed, what is the most likely reason?
 
@@ -693,7 +691,7 @@ PING example.com (172.66.147.243) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 ```
 
-**Answer:** Yes, both succeeded — 4/4 packets received, 0% loss for each. Since `example.com` resolved to an IP address and responded, both connectivity and DNS resolution are working correctly.
+**Answer:** Both worked, 4/4 with zero loss on each. example.com resolving and responding also means DNS is working, not just raw connectivity.
 
 Downloaded and compared files:
 ```
@@ -710,7 +708,7 @@ Output:
 
 ### Q33 — Are the two files identical?
 
-**Answer:** Yes — `diff` produced no output at all, meaning `wget` and `curl` pulled down identical content for debian.org's index page.
+**Answer:** Yep, diff came back empty so wget and curl grabbed the exact same page.
 
 ---
 
@@ -733,7 +731,7 @@ Fetched 101 kB in 0s (246 kB/s)
 11 packages can be upgraded. Run 'apt list --upgradable' to see them.
 ```
 
-**Answer:** Yes — it asked for my own account's login password (not root's), since sudo temporarily elevates my existing user rather than switching to a separate root login.
+**Answer:** Yeah, but my own password, not root's. sudo just temporarily elevates my account rather than logging in as a separate root user.
 
 ### Q35 — Were any packages upgraded? Roughly how many?
 
@@ -755,7 +753,7 @@ Summary:
   Download size: 5,563 kB
 ```
 
-**Answer:** Yes — 11 packages were upgraded, matching the count flagged by `apt list --upgradable` beforehand.
+**Answer:** 11, matches what apt list --upgradable said beforehand.
 
 ### Q36 — What's one thing htop shows you that top did not?
 
@@ -785,7 +783,7 @@ Description: interactive processes viewer
  all processes and their full command lines.
 ```
 
-**Answer:** htop is a lot more visual — color-coded per-core CPU bars, a scrollable/sortable process list controlled with arrow keys instead of typed commands, and the ability to kill or renice a process directly without hunting down its PID first.
+**Answer:** Way easier to actually use — color-coded bars per core, you can scroll around with arrow keys instead of typing, and you can kill or renice something directly instead of having to go look up its PID first.
 
 ### Q37 — What is nmap, according to the description?
 
@@ -800,7 +798,7 @@ nmap/stable 7.95+dfsg-3 amd64
   The Network Mapper
 ```
 
-**Answer:** Per `apt search`, nmap is described as "The Network Mapper" — a network exploration and security-scanning tool used to probe hosts and discover open ports and running services.
+**Answer:** apt search just calls it "The Network Mapper" — it's for probing hosts, finding open ports, seeing what services are running.
 
 ---
 
@@ -834,10 +832,16 @@ Archive:  report.zip
      1271                     2 files
 ```
 
-**Answer:** `hostname`, `whoami`, `uname -a`, `df -h`, and `date` each wrote into `~/report/system-info.txt`. A single `>` was used on the first command (`hostname`) so the file started clean, then `>>` on every command after that appended new output without erasing what came before. `zip -r` packaged the whole `report/` directory recursively, and `unzip -l` confirmed the archive's contents without extracting anything.
+**Answer:** hostname, whoami, uname -a, df -h, and date each get piped into system-info.txt. Only the first one uses a single `>` so it starts clean, then everything after uses `>>` so it keeps appending instead of wiping the file each time. zip -r grabs the whole report/ folder recursively, and unzip -l just lists what's in the archive without pulling anything out.
 
 ---
 
 ## Reflection
 
-Going through this, `less` was the command that surprised me most — I'd always just reached for `cat` on everything, but once a file gets long that's clearly the wrong tool, and being able to search inside it with `/` makes it way more useful than scrolling blind. The command I'll probably lean on most day to day is `grep`, since searching through logs or config files by hand doesn't scale once there's more than a screenful of text. The thing that's still a little fuzzy for me is exactly how permission bits interact with directories versus files — I get `chmod 700` on a script, but I'm less confident reasoning about what execute permission actually means on a folder. I also ran into a real-world case of this: this Debian install runs under WSL2 rather than a standalone VM, so it uses systemd's journal instead of a flat `/var/log/syslog` file — I had to substitute `journalctl` for the syslog-based commands in Parts 4 and 5, which was a good reminder that command output can vary meaningfully across otherwise-similar systems. Tying this back to security: this is basically the toolkit you'd use to investigate a machine after something's gone wrong — `grep`/`find` to hunt through logs for suspicious activity, `ps`/`top` to spot a process that shouldn't be running, and permissions to understand (or lock down) who can touch what in the first place.
+Honestly `less` was the one that surprised me most. I've just been using `cat` for everything, which is fine until a file actually has some length to it — then it's obviously the wrong tool, and being able to hit `/` and search inside instead of scrolling forever makes a real difference. I think `grep` is probably what I'll end up using the most going forward, since digging through logs or configs by eye stops working the second there's more than a screen's worth of text.
+
+Still a bit fuzzy on how permission bits actually work on directories versus files. `chmod 700` on a script makes sense to me, but I couldn't confidently explain what the execute bit even does on a folder if you asked me right now.
+
+One real hiccup: this box runs Debian under WSL2 instead of a normal VM, so there's no flat `/var/log/syslog` — it's all in systemd's journal instead. Had to swap in `journalctl` for a few of the syslog-based questions in Parts 4 and 5. Good reminder that the same OS can behave differently depending on what it's sitting on top of.
+
+And thinking about it from a security angle — this is basically exactly what you'd reach for if you were investigating a machine after something went wrong. grep and find to dig through logs for anything suspicious, ps and top to catch a process that shouldn't be there, and permissions to figure out (or lock down) who's actually allowed to touch what.
