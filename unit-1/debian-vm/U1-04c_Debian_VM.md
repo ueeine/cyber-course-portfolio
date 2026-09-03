@@ -197,7 +197,6 @@ Keep the VM handy — you'll need to boot it live for the instructor during the 
 | Guest Additions won't compile | You probably skipped installing `linux-headers-$(uname -r)` — go back and run that first. |
 | Window won't resize | Guest Additions didn't load. Reinstall it, or if the kernel's been updated since, run `sudo dpkg-reconfigure virtualbox-guest-dkms`. |
 
-Stuck longer than 30 minutes on one thing? Ask a classmate, then ask the instructor — don't just sit there spinning your wheels.
 
 ---
 
