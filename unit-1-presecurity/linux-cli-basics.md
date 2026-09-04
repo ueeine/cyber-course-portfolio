@@ -1,6 +1,6 @@
 # Linux CLI Basics
 
-## Part 1 - Getting your bearings
+## Part 1
 
 ## Q1 - What username are you logged in as?
 
@@ -14,7 +14,7 @@ Output:
 ueeine
 ```
 
-**Answer:** ueeine.
+ueeine.
 
 ## Q2 - Are you a member of the sudo group? How can you tell from the output of id?
 
@@ -28,7 +28,7 @@ Output:
 uid=1000(ueeine) gid=1000(ueeine) groups=1000(ueeine),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
 ```
 
-**Answer:** Yes, `27(sudo)` is in the groups list.
+Yes, `27(sudo)` is in the groups list.
 
 ## Q3 - What kernel version is your system running?
 
@@ -42,7 +42,7 @@ Output:
 Linux dolma 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 GNU/Linux
 ```
 
-**Answer:** 6.18.33.2-microsoft-standard-WSL2. The "microsoft-standard-WSL2" part is what tells you it's WSL2 and not a regular VM.
+6.18.33.2-microsoft-standard-WSL2. The "microsoft-standard-WSL2" part is what tells you it's WSL2 and not a regular VM.
 
 ## Q4 - What is the difference in the depth of information whatis and man give you?
 
@@ -58,15 +58,15 @@ whoami (1)           - print effective user name
 ```
 (man opened the full manual page: NAME, SYNOPSIS, DESCRIPTION, options, AUTHOR, REPORTING BUGS, SEE ALSO)
 
-**Answer:** whatis gives you just the one-line description from the top of the man page. man gives you the whole page - all the flags, examples, related commands. I'd use whatis if I already kind of know the command, man if I need to actually learn it.
+what is gives you just the one-line description from the top of the man page. man gives you the whole page - all the flags, examples, related commands. I'd use whatis if I already kind of know the command, man if I need to actually learn it.
 
 ## Q5 - While in man, how do you (a) search for "user" and (b) quit?
 
-**Answer:** `/user` then Enter jumps to the first match, `n` goes to the next one. `q` quits.
+`/user` then Enter jumps to the first match, `n` goes to the next one. `q` quits.
 
 ---
 
-## Part 2 - Navigation
+## Part 2
 
 ## Q6 - What did cd - do?
 
@@ -97,7 +97,7 @@ Output:
 /
 ```
 
-**Answer:** It sent me back to the previous directory (`/`) and printed it. It's basically a shortcut for jumping between two directories without retyping the path.
+It sent me back to the previous directory (`/`) and printed it. It's basically a shortcut for jumping between two directories without retyping the path.
 
 ## Q7 - What additional information does -l give you over plain ls?
 
@@ -113,7 +113,7 @@ drwxr-xr-x 2 root root    4096 May 16 16:32 alternatives
 drwxr-xr-x 3 root root    4096 Sep  2 21:34 apparmor.d
 ```
 
-**Answer:** Plain ls just shows names. -l adds permissions, link count, owner, group, size, and last modified date.
+Plain ls just shows names. -l adds permissions, link count, owner, group, size, and last modified date.
 
 ## Q8 - What does -a show that wasn't visible before? Name two examples.
 
@@ -130,7 +130,7 @@ drwxr-xr-x 18 root root    4096 Sep  2 21:20 ..
 -rw-r--r--  1 root root     208 May 16 16:31 .updated
 ```
 
-**Answer:** Dotfiles (hidden by default) plus `.` and `..`. In /etc that's `.pwd.lock` and `.updated`.
+Dotfiles (hidden by default) plus `.` and `..`. In /etc that's `.pwd.lock` and `.updated`.
 
 ## Q9 - What is the largest file in /var/log? What size is it?
 
@@ -153,7 +153,7 @@ lrwxrwxrwx  1 root root              39 May 16 16:31 README -> ../../usr/share/d
 -rw-rw-r--  1 root utmp             384 Sep  2 21:20 wtmp
 ```
 
-**Answer:** dpkg.log at 31K.
+dpkg.log at 31K.
 
 ## Q10 - What was modified most recently?
 
@@ -176,11 +176,11 @@ lrwxrwxrwx  1 root root               39 May 16 16:31 README -> ../../usr/share/
 -rw-rw-r--  1 root utmp                0 May 16 16:31 lastlog
 ```
 
-**Answer:** dpkg.log again, Sep 2 23:43. -t sorts by modification time, newest first.
+dpkg.log again, Sep 2 23:43. -t sorts by modification time, newest first.
 
 ---
 
-## Part 3 - Creating and managing files
+## Part 3
 
 ## Q11 - Show the command(s) you used to create the directory structure.
 
@@ -189,7 +189,7 @@ Command:
 $ mkdir -p ~/cyber-course/unit1 ~/cyber-course/unit2 ~/cyber-course/unit3/{osint,recon,crypto} ~/cyber-course/scratch
 ```
 
-**Answer:** Used brace expansion for the three unit3 subfolders so it's one command instead of three.
+Used brace expansion for the three unit3 subfolders so it's one command instead of three.
 
 File creation and moves:
 ```
@@ -224,7 +224,7 @@ This is my first file edited from the Linux command line.
 Today I learned that mv is also rename, and that nano shows shortcuts at the bottom.
 ```
 
-**Answer:** Ctrl+O to save (nano asks for the filename, just hit Enter), Ctrl+X to exit.
+Ctrl+O to save (nano asks for the filename, just hit Enter), Ctrl+X to exit.
 
 ## Q13 - Why did rmdir fail (or succeed)?
 
@@ -238,14 +238,14 @@ Output:
 rmdir: failed to remove '/home/ueeine/cyber-course/scratch': Directory not empty
 ```
 
-**Answer:** rmdir only works on empty directories, and scratch/ still had notes.txt in it. Used rm -r instead:
+rmdir only works on empty directories, and scratch/ still had notes.txt in it. Used rm -r instead:
 ```
 $ rm -r ~/cyber-course/scratch
 ```
 
 ---
 
-## Part 4 - Viewing files
+## Part 4
 
 ## Q14 - Which Debian version do you have?
 
@@ -268,7 +268,7 @@ SUPPORT_URL="https://www.debian.org/support"
 BUG_REPORT_URL="https://bugs.debian.org/"
 ```
 
-**Answer:** Debian GNU/Linux 13, codename trixie.
+Debian GNU/Linux 13, codename trixie.
 
 Also practiced:
 ```
@@ -309,11 +309,11 @@ Sep 03 00:05:30 dolma sudo[1575]:   ueeine : TTY=pts/2 ; USER=root ; COMMAND=/us
 Sep 03 00:05:30 dolma sudo[1575]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)
 ```
 
-**Answer:** Nothing unusual - sudo sessions opening and closing, a kernel note about dropping caches, a scheduled dpkg backup. All recent, timestamps go from 23:43 up to when I ran the command.
+Nothing unusual - sudo sessions opening and closing, a kernel note about dropping caches, a scheduled dpkg backup. All recent, timestamps go from 23:43 up to when I ran the command.
 
 ---
 
-## Part 5 - Searching
+## Part 5
 
 ## Q16 - How many lines were returned?
 
@@ -329,7 +329,7 @@ ssh             22/tcp                          # SSH Remote Login Protocol
 1
 ```
 
-**Answer:** 1.
+1.
 
 ## Search for "error" (case-insensitive) - substituted for syslog since it doesn't exist on this system
 
@@ -359,7 +359,7 @@ Output:
 ```
 (ran with sudo since some directories like /etc/ssl/private and /etc/credstore threw Permission denied otherwise)
 
-**Answer:** Add `-mtime -7` to limit results to files modified in the last week.
+Add `-mtime -7` to limit results to files modified in the last week.
 
 ## Q18 - Where are these commands actually located on the filesystem?
 
@@ -375,11 +375,11 @@ Output:
 /usr/bin/nano
 ```
 
-**Answer:** /usr/bin/ls and /usr/bin/nano.
+/usr/bin/ls and /usr/bin/nano.
 
 ---
 
-## Part 6 - History, redirection, and pipes
+## Part 6
 
 ## Q19 - What does the | symbol do here?
 
@@ -388,7 +388,7 @@ Command:
 $ history | tail -n 20
 ```
 
-**Answer:** It feeds the output of one command into the next as input, so commands can be chained instead of everything just printing to the screen.
+It feeds the output of one command into the next as input, so commands can be chained instead of everything just printing to the screen.
 
 ## Q20 - What is the difference between > and >>?
 
@@ -422,7 +422,7 @@ Output (second cat, after `date >>`):
 Thu Sep  3 12:11:33 AM EEST 2026
 ```
 
-**Answer:** `>` overwrites the file. `>>` appends to it. You can see that in the second cat output - the original listing is still there with the date added below it.
+`>` overwrites the file. `>>` appends to it. You can see that in the second cat output - the original listing is still there with the date added below it.
 
 ## Q21 - What was the output, and why?
 
@@ -437,17 +437,17 @@ Output:
 hello cyber world
 ```
 
-**Answer:** "hello cyber world" prints because echo outputs the string as-is, and it contains "cyber" so grep matches it.
+"hello cyber world" prints because echo outputs the string as-is, and it contains "cyber" so grep matches it.
 
 ## clear vs Ctrl+L
 
 Ran `clear`, then `Ctrl+L` on a new line.
 
-**Answer:** Same result on screen, different mechanism - Ctrl+L is handled by the terminal itself, clear is a separate program. Either way the scrollback isn't deleted, just scrolled out of view.
+Same result on screen, different mechanism - Ctrl+L is handled by the terminal itself, clear is a separate program. Either way the scrollback isn't deleted, just scrolled out of view.
 
 ---
 
-## Part 7 - Archives
+## Part 7
 
 Command:
 ```
@@ -487,7 +487,7 @@ drwxr-xr-x 2 ueeine ueeine 4096 Sep  3 00:12 unit1
 
 ## Q22 - Confirm with ls -la that the extraction worked. What did you find inside?
 
-**Answer:** Worked fine - unit1/ came back with intro.txt inside it, same as it went in.
+it Worked fine - unit1/ came back with intro.txt inside it, same as it went in.
 
 Command:
 ```
@@ -504,11 +504,11 @@ drwxr-xr-x ueeine/ueeine     0 2026-09-02 21:38 unit2/
 
 ## Q23 - What do the flags c, z, v, and f each mean?
 
-**Answer:** c = create the archive, z = compress with gzip, v = verbose (lists files as it goes), f = next argument is the archive filename.
+c = create the archive, z = compress with gzip, v = verbose (lists files as it goes), f = next argument is the archive filename.
 
 ---
 
-## Part 8 - Permissions
+## Part 8
 
 Command:
 ```
@@ -524,7 +524,7 @@ Output:
 
 ## Q24 - Paste the permission string. Can the owner execute the file?
 
-**Answer:** `-rw-r--r--`. No x anywhere, so no.
+`-rw-r--r--`. No x anywhere, so no.
 
 Content added via nano:
 ```
@@ -544,7 +544,8 @@ Output:
 
 ## Q25 - What happened, and why?
 
-**Answer:** Permission denied. Valid shebang doesn't matter - without the execute bit the shell won't run it.
+
+Permission denied. Valid shebang doesn't matter - without the execute bit the shell won't run it.
 
 Command:
 ```
@@ -561,7 +562,7 @@ Hello from my first script
 
 ## Q26 - What does the new permission string look like? Did the script run this time?
 
-**Answer:** `-rwxr--r--` - x showed up in the owner slot. Ran fine, printed "Hello from my first script."
+`-rwxr--r--` - x showed up in the owner slot. Ran fine, printed "Hello from my first script."
 
 Command:
 ```
@@ -576,11 +577,11 @@ Output:
 
 ## Q27 - What does 700 mean in plain language?
 
-**Answer:** Owner gets full read/write/execute (the 7). Everyone else gets nothing.
+Owner gets full read/write/execute (the 7). Everyone else gets nothing.
 
 ---
 
-## Part 9 - Processes and system info
+## Part 9
 
 ## Q28 - What does the USER column show?
 
@@ -603,7 +604,7 @@ root         142  0.0  0.0  18684  9052 ?        Ss   Sep02   0:00 /usr/lib/syst
 root         175  0.0  0.0   8168  2720 tty1     Ss+  Sep02   0:00 /sbin/agetty -o -- \u --noreset --noclear - linux
 ```
 
-**Answer:** Whoever owns/started the process. Mostly root since these are system services, plus message+ for the dbus daemon, which runs under its own account.
+Whoever owns/started the process. Mostly root since these are system services, plus message+ for the dbus daemon, which runs under its own account.
 
 Also ran top, sorted by memory and CPU, quit with q.
 
@@ -620,7 +621,7 @@ Output:
 80K     /home/ueeine/cyber-course/
 ```
 
-**Answer:** 80K total.
+80K total.
 
 ## Q30 - How much RAM does your VM have, and how much is currently used?
 
@@ -636,11 +637,11 @@ Mem:            15Gi       541Mi        15Gi       3.4Mi       179Mi        14Gi
 Swap:          4.0Gi          0B       4.0Gi
 ```
 
-**Answer:** 15Gi total, 541Mi used right now.
+15Gi total, 541Mi used right now.
 
 ---
 
-## Part 10 - Networking and downloads
+## Part 10
 
 ## Q31 - What is your VM's IP address on the primary interface?
 
@@ -656,7 +657,7 @@ Output (excerpt):
     inet 172.31.196.154/20 brd 172.31.207.255 scope global eth0
 ```
 
-**Answer:** 172.31.196.154 on eth0 - WSL2's internal virtual adapter, not reachable from outside the machine.
+172.31.196.154 on eth0 - WSL2's internal virtual adapter, not reachable from outside the machine.
 
 ## Q32 - Did both succeed? If one failed, what is the most likely reason?
 
@@ -685,7 +686,7 @@ PING example.com (172.66.147.243) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 ```
 
-**Answer:** Both succeeded, 4/4 with 0% packet loss. example.com resolving and answering means DNS is working too, not just raw connectivity.
+oth succeeded, 4/4 with 0% packet loss. example.com resolving and answering means DNS is working too, not just raw connectivity.
 
 Downloaded and compared files:
 ```
@@ -702,11 +703,11 @@ Output:
 
 ## Q33 - Are the two files identical?
 
-**Answer:** Yes, diff returned nothing, so wget and curl pulled the same page.
+Yes, diff returned nothing, so wget and curl pulled the same page.
 
 ---
 
-## Part 11 - Package management and sudo
+## Part 11
 
 ## Q34 - Did sudo ask for a password? Whose password?
 
@@ -725,7 +726,7 @@ Fetched 101 kB in 0s (246 kB/s)
 11 packages can be upgraded. Run 'apt list --upgradable' to see them.
 ```
 
-**Answer:** Yes, my own password, not root's. sudo temporarily elevates my account instead of logging in as root.
+Yes, my own password, not root's. sudo temporarily elevates my account instead of logging in as root.
 
 ## Q35 - Were any packages upgraded? Roughly how many?
 
@@ -747,7 +748,7 @@ Summary:
   Download size: 5,563 kB
 ```
 
-**Answer:** 11, matches what apt list --upgradable showed beforehand.
+11, matches what apt list --upgradable showed beforehand.
 
 ## Q36 - What's one thing htop shows you that top did not?
 
@@ -777,7 +778,7 @@ Description: interactive processes viewer
  all processes and their full command lines.
 ```
 
-**Answer:** It's just easier to use - color-coded bars per core, scroll with arrow keys, and you can kill or renice a process directly instead of hunting for its PID first.
+It's just easier to use - color-coded bars per core, scroll with arrow keys, and you can kill or renice a process directly instead of hunting for its PID first.
 
 ## Q37 - What is nmap, according to the description?
 
@@ -792,11 +793,11 @@ nmap/stable 7.95+dfsg-3 amd64
   The Network Mapper
 ```
 
-**Answer:** apt search calls it "The Network Mapper" - used for probing hosts, checking open ports, and seeing what services are running.
+apt search calls it "The Network Mapper" - used for probing hosts, checking open ports, and seeing what services are running.
 
 ---
 
-## Part 12 - Putting it together
+## Part 12
 
 ## Q38 - Paste the commands you used.
 
@@ -826,4 +827,4 @@ Archive:  report.zip
      1271                     2 files
 ```
 
-**Answer:** hostname, whoami, uname -a, df -h, and date each get written into system-info.txt in order. The first one uses `>` so the file starts clean, the rest use `>>` so they append instead of overwriting. zip -r grabs the whole report/ folder recursively, unzip -l just lists what's in the archive without extracting.
+hostname, whoami, uname -a, df -h, and date each get written into system-info.txt in order. The first one uses `>` so the file starts clean, the rest use `>>` so they append instead of overwriting. zip -r grabs the whole report/ folder recursively, unzip -l just lists what's in the archive without extracting.
