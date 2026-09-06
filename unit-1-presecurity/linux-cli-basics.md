@@ -1,15 +1,17 @@
-# Linux CLI Basics
+## Linux CLI Basics
 
 ## Part 1
 
 ## Q1 - What username are you logged in as?
 
 Command:
+
 ```
 $ whoami
 ```
 
 Output:
+
 ```
 ueeine
 ```
@@ -19,11 +21,13 @@ ueeine.
 ## Q2 - Are you a member of the sudo group? How can you tell from the output of id?
 
 Command:
+
 ```
 $ id
 ```
 
 Output:
+
 ```
 uid=1000(ueeine) gid=1000(ueeine) groups=1000(ueeine),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
 ```
@@ -33,11 +37,13 @@ Yes, `27(sudo)` is in the groups list.
 ## Q3 - What kernel version is your system running?
 
 Command:
+
 ```
 $ uname -a
 ```
 
 Output:
+
 ```
 Linux dolma 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 21:54:43 UTC 2026 x86_64 GNU/Linux
 ```
@@ -47,18 +53,21 @@ Linux dolma 6.18.33.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 18 
 ## Q4 - What is the difference in the depth of information whatis and man give you?
 
 Command:
+
 ```
 $ whatis whoami
 $ man whoami
 ```
 
 Output:
+
 ```
 whoami (1)           - print effective user name
 ```
+
 (man opened the full manual page: NAME, SYNOPSIS, DESCRIPTION, options, AUTHOR, REPORTING BUGS, SEE ALSO)
 
-what is gives you just the one-line description from the top of the man page. man gives you the whole page - all the flags, examples, related commands. I'd use whatis if I already kind of know the command, man if I need to actually learn it.
+whatis gives you just the one-line description from the top of the man page. man gives you the whole page - all the flags, examples, related commands. I'd use whatis if I already kind of know the command, man if I need to actually learn it.
 
 ## Q5 - While in man, how do you (a) search for "user" and (b) quit?
 
@@ -71,6 +80,7 @@ what is gives you just the one-line description from the top of the man page. ma
 ## Q6 - What did cd - do?
 
 Command:
+
 ```
 $ cd /etc
 $ pwd
@@ -87,6 +97,7 @@ $ pwd
 ```
 
 Output:
+
 ```
 /etc
 /
@@ -102,11 +113,13 @@ It sent me back to the previous directory (`/`) and printed it. It's basically a
 ## Q7 - What additional information does -l give you over plain ls?
 
 Command:
+
 ```
 $ ls -l /etc
 ```
 
 Output (excerpt):
+
 ```
 -rw-r--r-- 1 root root    3981 May  6  2025 adduser.conf
 drwxr-xr-x 2 root root    4096 May 16 16:32 alternatives
@@ -118,11 +131,13 @@ Plain ls just shows names. -l adds permissions, link count, owner, group, size, 
 ## Q8 - What does -a show that wasn't visible before? Name two examples.
 
 Command:
+
 ```
 $ ls -la /etc
 ```
 
 Output (excerpt):
+
 ```
 drwxr-xr-x 56 root root    4096 Sep  2 23:43 .
 drwxr-xr-x 18 root root    4096 Sep  2 21:20 ..
@@ -135,11 +150,13 @@ Dotfiles (hidden by default) plus `.` and `..`. In /etc that's `.pwd.lock` and `
 ## Q9 - What is the largest file in /var/log? What size is it?
 
 Command:
+
 ```
 $ ls -lh /var/log
 ```
 
 Output:
+
 ```
 total 52K
 -rw-r--r--  1 root root             174 Sep  2 21:34 alternatives.log
@@ -158,11 +175,13 @@ dpkg.log at 31K.
 ## Q10 - What was modified most recently?
 
 Command:
+
 ```
 $ ls -lt /var/log
 ```
 
 Output:
+
 ```
 total 52
 -rw-r--r--  1 root root            31299 Sep  2 23:43 dpkg.log
@@ -185,6 +204,7 @@ dpkg.log again, Sep 2 23:43. -t sorts by modification time, newest first.
 ## Q11 - Show the command(s) you used to create the directory structure.
 
 Command:
+
 ```
 $ mkdir -p ~/cyber-course/unit1 ~/cyber-course/unit2 ~/cyber-course/unit3/{osint,recon,crypto} ~/cyber-course/scratch
 ```
@@ -192,6 +212,7 @@ $ mkdir -p ~/cyber-course/unit1 ~/cyber-course/unit2 ~/cyber-course/unit3/{osint
 Used brace expansion for the three unit3 subfolders so it's one command instead of three.
 
 File creation and moves:
+
 ```
 $ cd ~/cyber-course/scratch
 $ touch a.txt b.txt c.txt
@@ -209,9 +230,11 @@ a.txt  notes.txt
 ## Q12 - What key combination did you use to save? What key combination did you use to exit?
 
 Command:
+
 ```
 $ nano ~/cyber-course/unit1/intro.txt
 ```
+
 (typed the two sentences from the instructions)
 
 ```
@@ -219,6 +242,7 @@ $ cat ~/cyber-course/unit1/intro.txt
 ```
 
 Output:
+
 ```
 This is my first file edited from the Linux command line.
 Today I learned that mv is also rename, and that nano shows shortcuts at the bottom.
@@ -229,16 +253,19 @@ Ctrl+O to save (nano asks for the filename, just hit Enter), Ctrl+X to exit.
 ## Q13 - Why did rmdir fail (or succeed)?
 
 Command:
+
 ```
 $ rmdir ~/cyber-course/scratch
 ```
 
 Output:
+
 ```
 rmdir: failed to remove '/home/ueeine/cyber-course/scratch': Directory not empty
 ```
 
 rmdir only works on empty directories, and scratch/ still had notes.txt in it. Used rm -r instead:
+
 ```
 $ rm -r ~/cyber-course/scratch
 ```
@@ -250,11 +277,13 @@ $ rm -r ~/cyber-course/scratch
 ## Q14 - Which Debian version do you have?
 
 Command:
+
 ```
 $ cat /etc/os-release
 ```
 
 Output:
+
 ```
 PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
 NAME="Debian GNU/Linux"
@@ -271,6 +300,7 @@ BUG_REPORT_URL="https://bugs.debian.org/"
 Debian GNU/Linux 13, codename trixie.
 
 Also practiced:
+
 ```
 $ cat /etc/services      # long file, viewed with cat then Ctrl+C
 $ less /etc/services     # scrolled with arrows, searched with /ssh, n for next, G/g for end/start, q to quit
@@ -278,6 +308,7 @@ $ head -n 5 /etc/services
 ```
 
 Output of head:
+
 ```
 # Network services, Internet style
 #
@@ -291,11 +322,13 @@ Output of head:
 Note: this system doesn't have a `/var/log/syslog` - WSL2 runs on systemd's journal instead, so /var/log only has dpkg.log, alternatives.log, and the journal/ folder. Used journalctl instead of what the assignment expected.
 
 Command:
+
 ```
 $ sudo journalctl -n 10
 ```
 
 Output:
+
 ```
 Sep 02 23:43:12 dolma sudo[1364]: pam_unix(sudo:session): session closed for user root
 Sep 02 23:43:25 dolma sudo[1412]:   ueeine : TTY=pts/2 ; PWD=/home/ueeine/test-extract ; USER=root ; COMMAND=/usr/bin/apt...
@@ -318,12 +351,14 @@ Nothing unusual - sudo sessions opening and closing, a kernel note about droppin
 ## Q16 - How many lines were returned?
 
 Command:
+
 ```
 $ grep "ssh" /etc/services
 $ grep "ssh" /etc/services | wc -l
 ```
 
 Output:
+
 ```
 ssh             22/tcp                          # SSH Remote Login Protocol
 1
@@ -334,11 +369,13 @@ ssh             22/tcp                          # SSH Remote Login Protocol
 ## Search for "error" (case-insensitive) - substituted for syslog since it doesn't exist on this system
 
 Command:
+
 ```
 $ sudo journalctl | grep -i "error"
 ```
 
 Output:
+
 ```
 Sep 02 21:20:15 dolma kernel: RAS: Correctable Errors collector initialized.
 Sep 02 21:20:58 dolma unknown: WSL (135) ERROR: CheckConnection: getaddrinfo() failed: -5
@@ -348,15 +385,18 @@ Sep 02 23:25:50 dolma sudo[762]:   ueeine : TTY=pts/2 ; USER=root ; COMMAND=/usr
 ## Q17 - How would you modify the command to show only .conf files modified in the last 7 days?
 
 Command:
+
 ```
 $ find /etc -name "*.conf" -mtime -7
 ```
 
 Output:
+
 ```
 /etc/resolv.conf
 /etc/ld.so.conf.d/ld.wsl.conf
 ```
+
 (ran with sudo since some directories like /etc/ssl/private and /etc/credstore threw Permission denied otherwise)
 
 Add `-mtime -7` to limit results to files modified in the last week.
@@ -364,12 +404,14 @@ Add `-mtime -7` to limit results to files modified in the last week.
 ## Q18 - Where are these commands actually located on the filesystem?
 
 Command:
+
 ```
 $ which ls
 $ which nano
 ```
 
 Output:
+
 ```
 /usr/bin/ls
 /usr/bin/nano
@@ -384,6 +426,7 @@ Output:
 ## Q19 - What does the | symbol do here?
 
 Command:
+
 ```
 $ history | tail -n 20
 ```
@@ -393,6 +436,7 @@ It feeds the output of one command into the next as input, so commands can be ch
 ## Q20 - What is the difference between > and >>?
 
 Command:
+
 ```
 $ ls -la ~/cyber-course/ > ~/listing.txt
 $ cat ~/listing.txt
@@ -401,6 +445,7 @@ $ cat ~/listing.txt
 ```
 
 Output (first cat):
+
 ```
 total 68
 drwxr-xr-x 6 ueeine ueeine  4096 Sep  3 00:02 .
@@ -417,6 +462,7 @@ drwxr-xr-x 5 ueeine ueeine  4096 Sep  2 21:38 unit3
 ```
 
 Output (second cat, after `date >>`):
+
 ```
 (same listing as above)
 Thu Sep  3 12:11:33 AM EEST 2026
@@ -427,12 +473,14 @@ Thu Sep  3 12:11:33 AM EEST 2026
 ## Q21 - What was the output, and why?
 
 Command:
+
 ```
 $ history | grep "cd "
 $ echo "hello cyber world" | grep "cyber"
 ```
 
 Output:
+
 ```
 hello cyber world
 ```
@@ -450,6 +498,7 @@ Same result on screen, different mechanism - Ctrl+L is handled by the terminal i
 ## Part 7
 
 Command:
+
 ```
 $ cd ~/cyber-course/
 $ zip -r unit1.zip unit1/
@@ -457,6 +506,7 @@ $ unzip -l unit1.zip
 ```
 
 Output:
+
 ```
 Archive:  unit1.zip
   Length      Date    Time    Name
@@ -468,6 +518,7 @@ Archive:  unit1.zip
 ```
 
 Command:
+
 ```
 $ mkdir ~/test-extract
 $ cd ~/test-extract
@@ -476,6 +527,7 @@ $ ls -la
 ```
 
 Output:
+
 ```
 Archive:  /home/ueeine/cyber-course/unit1.zip
   inflating: unit1/intro.txt
@@ -487,9 +539,10 @@ drwxr-xr-x 2 ueeine ueeine 4096 Sep  3 00:12 unit1
 
 ## Q22 - Confirm with ls -la that the extraction worked. What did you find inside?
 
-it Worked fine - unit1/ came back with intro.txt inside it, same as it went in.
+It worked fine - unit1/ came back with intro.txt inside it, same as it went in.
 
 Command:
+
 ```
 $ cd ~/cyber-course/
 $ tar -czvf unit2.tar.gz unit2/
@@ -497,6 +550,7 @@ $ tar -tvf unit2.tar.gz
 ```
 
 Output:
+
 ```
 drwxr-xr-x ueeine/ueeine     0 2026-09-02 21:38 unit2/
 -rw-r--r-- ueeine/ueeine     0 2026-09-02 21:38 unit2/b.txt
@@ -511,6 +565,7 @@ c = create the archive, z = compress with gzip, v = verbose (lists files as it g
 ## Part 8
 
 Command:
+
 ```
 $ rm ~/cyber-course/hello.sh
 $ touch ~/cyber-course/hello.sh
@@ -518,6 +573,7 @@ $ ls -l ~/cyber-course/hello.sh
 ```
 
 Output:
+
 ```
 -rw-r--r-- 1 ueeine ueeine 0 Sep  3 00:13 /home/ueeine/cyber-course/hello.sh
 ```
@@ -527,27 +583,30 @@ Output:
 `-rw-r--r--`. No x anywhere, so no.
 
 Content added via nano:
+
 ```
 #!/bin/bash
 echo "Hello from my first script"
 ```
 
 Command:
+
 ```
 $ ~/cyber-course/hello.sh
 ```
 
 Output:
+
 ```
 -bash: /home/ueeine/cyber-course/hello.sh: Permission denied
 ```
 
 ## Q25 - What happened, and why?
 
-
-Permission denied. Valid shebang doesn't matter - without the execute bit the shell won't run it.
+Permission denied. A valid shebang doesn't matter - without the execute bit the shell won't run it.
 
 Command:
+
 ```
 $ chmod u+x ~/cyber-course/hello.sh
 $ ls -l ~/cyber-course/hello.sh
@@ -555,6 +614,7 @@ $ ~/cyber-course/hello.sh
 ```
 
 Output:
+
 ```
 -rwxr--r-- 1 ueeine ueeine 48 Sep  3 00:13 /home/ueeine/cyber-course/hello.sh
 Hello from my first script
@@ -565,12 +625,14 @@ Hello from my first script
 `-rwxr--r--` - x showed up in the owner slot. Ran fine, printed "Hello from my first script."
 
 Command:
+
 ```
 $ chmod 700 ~/cyber-course/hello.sh
 $ ls -l ~/cyber-course/hello.sh
 ```
 
 Output:
+
 ```
 -rwx------ 1 ueeine ueeine 48 Sep  3 00:13 /home/ueeine/cyber-course/hello.sh
 ```
@@ -586,11 +648,13 @@ Owner gets full read/write/execute (the 7). Everyone else gets nothing.
 ## Q28 - What does the USER column show?
 
 Command:
+
 ```
 $ ps aux | head -n 10
 ```
 
 Output:
+
 ```
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root           1  0.0  0.0  23712 14628 ?        Ss   Sep02   0:00 /sbin/init
@@ -611,12 +675,14 @@ Also ran top, sorted by memory and CPU, quit with q.
 ## Q29 - How much disk space is your cyber-course directory using?
 
 Command:
+
 ```
 $ df -h
 $ du -sh ~/cyber-course/
 ```
 
 Output:
+
 ```
 80K     /home/ueeine/cyber-course/
 ```
@@ -626,11 +692,13 @@ Output:
 ## Q30 - How much RAM does your VM have, and how much is currently used?
 
 Command:
+
 ```
 $ free -h
 ```
 
 Output:
+
 ```
                total        used        free      shared  buff/cache   available
 Mem:            15Gi       541Mi        15Gi       3.4Mi       179Mi        14Gi
@@ -646,28 +714,32 @@ Swap:          4.0Gi          0B       4.0Gi
 ## Q31 - What is your VM's IP address on the primary interface?
 
 Command:
+
 ```
 $ ip a
 ```
 
 Output (excerpt):
+
 ```
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
     link/ether 00:15:5d:76:67:2d brd ff:ff:ff:ff:ff:ff
     inet 172.31.196.154/20 brd 172.31.207.255 scope global eth0
 ```
 
-172.31.196.154 on eth0 - WSL2's internal virtual adapter, not reachable from outside the machine.
+172.31.196.154 on eth0 - a private, NAT-only address on WSL2's internal virtual adapter, not reachable from outside the machine.
 
 ## Q32 - Did both succeed? If one failed, what is the most likely reason?
 
 Command:
+
 ```
 $ ping -c 4 1.1.1.1
 $ ping -c 4 example.com
 ```
 
 Output:
+
 ```
 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
 64 bytes from 1.1.1.1: icmp_seq=1 ttl=57 time=17.7 ms
@@ -686,9 +758,10 @@ PING example.com (172.66.147.243) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 ```
 
-oth succeeded, 4/4 with 0% packet loss. example.com resolving and answering means DNS is working too, not just raw connectivity.
+Both succeeded, 4/4 with 0% packet loss on each. example.com resolving and answering means DNS is working too, not just raw connectivity.
 
 Downloaded and compared files:
+
 ```
 $ wget https://www.debian.org/index.html -O ~/cyber-course/debian.html
 $ less ~/cyber-course/debian.html
@@ -697,6 +770,7 @@ $ diff ~/cyber-course/debian.html ~/cyber-course/debian2.html
 ```
 
 Output:
+
 ```
 (no output)
 ```
@@ -712,11 +786,13 @@ Yes, diff returned nothing, so wget and curl pulled the same page.
 ## Q34 - Did sudo ask for a password? Whose password?
 
 Command:
+
 ```
 $ sudo apt update
 ```
 
 Output:
+
 ```
 Hit:1 https://security.debian.org/debian-security trixie-security InRelease
 Hit:2 https://deb.debian.org/debian trixie InRelease
@@ -731,12 +807,14 @@ Yes, my own password, not root's. sudo temporarily elevates my account instead o
 ## Q35 - Were any packages upgraded? Roughly how many?
 
 Command:
+
 ```
 $ apt list --upgradable
 $ sudo apt upgrade
 ```
 
 Output (excerpt):
+
 ```
 11 packages can be upgraded.
 Upgrading:
@@ -753,6 +831,7 @@ Summary:
 ## Q36 - What's one thing htop shows you that top did not?
 
 Command:
+
 ```
 $ sudo apt install htop
 $ which htop
@@ -760,6 +839,7 @@ $ apt show htop | head -n 20
 ```
 
 Output:
+
 ```
 /usr/bin/htop
 
@@ -773,7 +853,7 @@ Depends: libc6 (>= 2.38), libncursesw6 (>= 6), libtinfo6 (>= 6)
 Suggests: lm-sensors, lsof, strace
 Homepage: https://htop.dev/
 Description: interactive processes viewer
- Htop is an ncursed-based process viewer similar to top, but it
+ Htop is an ncurses-based process viewer similar to top, but it
  allows one to scroll the list vertically and horizontally to see
  all processes and their full command lines.
 ```
@@ -783,11 +863,13 @@ It's just easier to use - color-coded bars per core, scroll with arrow keys, and
 ## Q37 - What is nmap, according to the description?
 
 Command:
+
 ```
 $ apt search nmap
 ```
 
 Output (excerpt):
+
 ```
 nmap/stable 7.95+dfsg-3 amd64
   The Network Mapper
@@ -802,6 +884,7 @@ apt search calls it "The Network Mapper" - used for probing hosts, checking open
 ## Q38 - Paste the commands you used.
 
 Command:
+
 ```
 $ mkdir ~/report
 $ hostname > ~/report/system-info.txt
@@ -815,6 +898,7 @@ $ unzip -l report.zip
 ```
 
 Output:
+
 ```
   adding: report/ (stored 0%)
   adding: report/system-info.txt (deflated 63%)
@@ -828,3 +912,5 @@ Archive:  report.zip
 ```
 
 hostname, whoami, uname -a, df -h, and date each get written into system-info.txt in order. The first one uses `>` so the file starts clean, the rest use `>>` so they append instead of overwriting. zip -r grabs the whole report/ folder recursively, unzip -l just lists what's in the archive without extracting.
+
+---
