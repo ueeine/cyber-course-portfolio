@@ -1,12 +1,18 @@
 # Shell Scripting Basics
 
+**Goal:** Customize `~/.bashrc` (banner, aliases, history limits) and write a small script that asks for a directory name, creates it, and fills it with files. Getting comfortable with variables, user input, if statements, and loops.
+
+**Source:** U1-06 Shell Scripting Basics assignment.
+
+**Environment:** Debian 13 VM, bash, nano.
+
 ---
 
 ## Part 1 - Exploring `~/.bashrc`
 
 ### Q1
 
-```
+```bash
 $ ls -la ~ | grep bashrc
 -rw-r--r-- 1 ueeine ueeine 3526 Sep  2 21:20 .bashrc
 ```
@@ -37,11 +43,13 @@ This part controls how bash saves your command history — it skips duplicate li
 
 These are already in the default `.bashrc` but they're commented out, so they're not actually active unless you remove the `#`. The two named in the question are `ll` and `la`.
 
+---
+
 ## Part 2 - Backup Before Editing
 
 ### Q4
 
-```
+```bash
 $ cp ~/.bashrc ~/.bashrc.backup
 $ ls -la ~/.bashrc*
 -rw-r--r-- 1 ueeine ueeine 3526 Sep  2 21:20 /home/ueeine/.bashrc
@@ -50,24 +58,29 @@ $ ls -la ~/.bashrc*
 
 Both files are there, same size, backup has today's timestamp.
 
+---
+
 ## Part 3 - Adding a Welcome Banner
 
 ### Q5
 
 Added to the bottom of `.bashrc`:
+
 ```bash
 # My customizations start here
 echo "Hello, dolma"
 ```
 
 Opened a new terminal and got:
-```
+
+```text
 Hello, dolma
 ```
 
 ### Q6
 
 Replaced it with the personalized version:
+
 ```bash
 echo "==============================="
 echo "  Welcome back, $(whoami)"
@@ -77,7 +90,8 @@ echo "==============================="
 ```
 
 Output in a new terminal:
-```
+
+```text
 ===============================
   Welcome back, ueeine
   Host: dolma
@@ -89,18 +103,22 @@ Output in a new terminal:
 
 `$(whoami)` runs the `whoami` command and drops its output right into the text. The `$()` part is command substitution — it tells bash "run this command first, then put whatever it printed here."
 
+---
+
 ## Part 4 - Adding Aliases
 
 ### Q8
 
 Added:
+
 ```bash
 alias ll='ls -la'
 alias gohome='cd ~/cyber-course'
 ```
 
 After running `source ~/.bashrc`:
-```
+
+```bash
 $ ll
 total 68
 drwx------ 7 ueeine ueeine 4096 Sep 13 01:19 .
@@ -120,7 +138,7 @@ $ pwd
 
 ### Q9
 
-```
+```bash
 $ alias
 alias gohome='cd ~/cyber-course'
 alias ll='ls -la'
@@ -133,11 +151,13 @@ alias ls='ls --color=auto'
 
 `gohome` is the one I actually use — saves me typing out the full path every time I want to get to my course folder.
 
+---
+
 ## Part 5 - History Settings
 
 ### Q11
 
-```
+```bash
 $ echo $HISTSIZE
 1000
 $ echo $HISTFILESIZE
@@ -146,7 +166,7 @@ $ echo $HISTFILESIZE
 
 ### Q12
 
-```
+```bash
 $ wc -l ~/.bash_history
 344 /home/ueeine/.bash_history
 
@@ -165,13 +185,15 @@ pwd
 ### Q13
 
 Changed the values in `.bashrc` to:
-```
+
+```bash
 HISTSIZE=10000
 HISTFILESIZE=20000
 ```
 
 After sourcing the file:
-```
+
+```bash
 $ echo $HISTSIZE
 10000
 $ echo $HISTFILESIZE
@@ -180,7 +202,7 @@ $ echo $HISTFILESIZE
 
 ### Q14
 
-```
+```bash
 $ HISTSIZE=5
 $ history
   361  source ~/.bashrc
@@ -196,16 +218,14 @@ Only shows the last 5 commands now, even though the numbering keeps going from b
 
 If someone got into my home folder and read `.bash_history`, they could see passwords or tokens I might've typed by accident, plus usernames, file paths, and whatever commands I've been running — basically a trail of what I've been doing on the system.
 
+---
+
 ## Part 6 and 7 - First Script and Testing
 
 Wrote the script in `~/cyber-course/make-files.sh`:
 
 ```bash
 #!/bin/bash
-# make-files.sh — Ask for a directory name, create it if needed,
-#                 and populate it with 5 empty files.
-# Author: ueeine
-# Date:   Sep 13 2026
 
 read -p "Enter a directory name: " dirname
 
@@ -230,7 +250,7 @@ echo "Created 5 files in $dirname"
 
 ### Q16 - New directory
 
-```
+```bash
 $ ./make-files.sh
 Enter a directory name: test-run-1
 Created directory: test-run-1
@@ -251,7 +271,7 @@ drwxr-xr-x 7 ueeine ueeine 4096 Sep 13 01:27 ..
 
 Ran it again with the same name:
 
-```
+```bash
 $ ./make-files.sh
 Enter a directory name: test-run-1
 Directory already exists: test-run-1
@@ -267,7 +287,7 @@ So `touch` doesn't delete or overwrite the files — it just updates the modifie
 
 ### Q18 - Empty input
 
-```
+```bash
 $ ./make-files.sh
 Enter a directory name:
 Error: no name was given.
@@ -278,11 +298,13 @@ $ echo $?
 
 Exits with status 1, no directory or files get created.
 
+---
+
 ## Part 8 - Improvement
 
 I went with **Option C — refuse to overwrite**. If the directory already exists and already has stuff in it, the script bails out instead of touching anything.
 
-```
+```bash
 $ ./make-files.sh
 Enter a directory name: safe-test
 Created directory: safe-test
@@ -295,15 +317,14 @@ Error: directory already exists and is not empty: safe-test
 
 Second run correctly refuses — this fixes the exact issue from Q17.
 
+---
+
 ## Final script
 
-See `make-files.sh` in this folder. Full contents:
+See [`make-files.sh`](./make-files.sh) in this folder. Full contents:
 
 ```bash
 #!/bin/bash
-# make-files.sh — Ask for a directory name, create it if needed,
-#                 and populate it with 5 empty files.
-# Improvement (Option C): refuses to touch a non-empty existing directory.
 
 read -p "Enter a directory name: " dirname
 
@@ -331,3 +352,8 @@ done
 echo "Created 5 files in $dirname"
 ```
 
+---
+
+## Reflection
+
+The `.bashrc` part was easier than I thought — banner, aliases, history limits, all pretty quick once I got used to nano. The harder part was actually getting nano to cooperate while writing the script — I kept accidentally typing commands into the file instead of running them, and had to redo the Option C edit a few times because nano got messy with pasted text. Ended up using `cat > file << EOF` to just write the whole script out in one go instead of fighting with the editor, which worked way better. The most useful thing I learned about `.bashrc` is that it's really just a normal script that runs every time you open a terminal — nothing special about it, same `if`/`read`/`echo` logic as any other script, which made the whole thing click. As for what I'd want to script next, something like scanning `/var/log/auth.log` for failed SSH login attempts would actually be useful and ties into the security side of this course.
