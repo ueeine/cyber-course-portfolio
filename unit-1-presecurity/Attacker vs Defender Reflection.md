@@ -1,7 +1,7 @@
 # Attacker vs Defender — Email account
 
 ## The system
-My Gmail account. It matters because it's connected to almost all my social media accounts and most of my other emails. If it got compromised, I could lose almost all my data since everything is tied back to it.
+My Gmail account. It matters because it's connected to almost all my social media accounts and most of my other emails. If it got hacked, I could lose almost all my data since everything is tied back to it.
 
 ## Attacker view
 An attacker could send me a malicious ad or a malware-trapped file, maybe through an email made to look like a normal Gmail alert. If I click the link, it takes me to a fake website that looks legit. If I enter any info there, like filling out a form or applying for something, it pulls that data straight from me. If instead I download and open the attached file, I lose my data instantly, since the malware runs the second the file is opened.
