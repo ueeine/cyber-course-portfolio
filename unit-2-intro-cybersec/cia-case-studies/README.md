@@ -1,71 +1,80 @@
 CIA Triad Case Studies
+
 Scenario A: The Hospital
-Primary CIA violation: Availability. Ransomware locked the file servers and took scheduling offline, forcing emergency patients to be diverted for 36 hours.
+Primary CIA violation: Availability. Ransomware lock up the file servers and take scheduling offline so emergency patients was got diverted for 36 hours.
 
 Secondary impacts:
 
-Confidentiality: the attackers also exfiltrated a sample of patient files before encrypting the rest, a double extortion tactic.
-Integrity: once the hospital restores from backup, they need to verify nothing was altered before trusting the records again.
-Attack technique: Ransomware, likely delivered through phishing or an unpatched vulnerability, combined with data exfiltration before encryption.
+Confidentiality: the attackers also stealed some of patient files before they was encrypting the rest, this is call double extortion.
+Integrity: when hospital restoring from backup them need to check nothing are altered before they trusting the records again.
+
+Attack technique: Ransomware, probably it come in from phishing or unpatched vulnerability, and also data exfiltration is happen before encryption.
 
 Preventive controls:
 
-Phishing training and MFA on email/remote access.
-Network segmentation between clinical/scheduling systems and general IT.
-Regular patching and EDR to catch exploitation early.
+Phishing training and MFA for email and remote access.
+Network segmentation between clinical and scheduling systems and the general IT stuff.
+Regular patching and EDR so exploitation are catched early.
+
 Damage-limitation controls:
 
-Offline backups and a tested disaster recovery plan.
-DLP monitoring to catch large outbound transfers before exfiltration finishes.
-A pre-written incident response plan with downtime/diversion procedures.
+Offline backups and disaster recovery plan what is actually tested.
+DLP monitoring for catch big outbound transfers before exfiltration is finishing.
+Incident response plan that is wrote before, with downtime and diversion procedures.
+
 Scenario B: The Leaked Database
-Primary CIA violation: Confidentiality. Nothing was locked or changed, the data was simply copied and posted publicly. Pure disclosure.
+Primary CIA violation: Confidentiality. Nothing are locked or changing, data just get copied and posted on public. Pure disclosure.
 
-Secondary impacts: Integrity wasn't touched (data wasn't altered) and availability wasn't affected (systems stayed up). This one stayed contained to a single pillar.
+Secondary impacts: Integrity it wasnt touch (data didnt got altered) and availability wasnt affect (systems is stay up). This one stayed in only one pillar.
 
-Attack technique: Data exfiltration, likely through an exploited vulnerability like SQL injection or through stolen credentials.
+Attack technique: Data exfiltration, likely by a exploited vulnerability like SQL injection or by stolen credentials is used.
 
 Preventive controls:
 
-Input validation and parameterized queries to close off injection attacks.
-Stronger password hashing (MD5 is outdated; bcrypt or similar would limit the damage).
-Least-privilege access on the database so one compromised account can't pull the whole table.
+Input validation and parameterized queries for stopping the injection attacks.
+More better password hashing (MD5 are outdated, bcrypt or similar thing would limiting the damage).
+Least-privilege access on database so one compromised account cant pull whole table.
+
 Damage-limitation controls:
 
-Monitoring for unusual bulk queries to catch exfiltration in progress.
-Storing only partial/tokenized card numbers.
-Fast breach notification and forced password resets to prevent account takeovers.
+Monitoring for strange bulk queries for catching exfiltration when its happen.
+Store only partial or tokenized card numbers.
+Fast breach notification and forced password resets so account takeovers dont happening.
+
 Scenario C: The Defaced Municipal Site
-Primary CIA violation: Integrity. The homepage content was changed without authorization.
+Primary CIA violation: Integrity. Homepage content are changed without no authorization.
 
-Secondary impacts: Availability took a hit too: the site was offline for 4 hours during restoration. Confidentiality wasn't involved since no personal data was touched.
+Secondary impacts: Availability got hit also: site was offline 4 hours during it restoring. Confidentiality it wasnt involved because no personal data is touched.
 
-Attack technique: Web defacement, likely through a vulnerable CMS: an outdated plugin, weak admin login, or unpatched server.
+Attack technique: Web defacement, likely because of vulnerable CMS: a outdated plugin, weak admin login, or server that unpatched.
 
 Preventive controls:
 
-Keeping the CMS and plugins patched.
-MFA on admin accounts.
-A web application firewall to filter common exploit attempts.
+Keeping CMS and plugins is patched.
+MFA at admin accounts.
+Web application firewall for filtering the common exploit attempts.
+
 Damage-limitation controls:
 
-File integrity monitoring to flag unauthorized changes quickly.
-Tested backups, which is what got the site back up in 4 hours.
-A communications plan ready for public/press response.
+File integrity monitoring for flag unauthorized changes more quick.
+Tested backups, that is what make the site come back in 4 hours.
+Communications plan be ready for public and press response.
+
 Scenario D: The Manipulated Invoice
-Primary CIA violation: Integrity. The invoice's bank details were changed in transit after the supplier's email account was compromised.
+Primary CIA violation: Integrity. Invoice bank details was change in transit after supplier email account are got compromised.
 
-Secondary impacts: Confidentiality: the attack only worked because the supplier's email account was already compromised. Availability wasn't affected, nothing went down, which is partly why it took two weeks to notice.
+Secondary impacts: Confidentiality: attack only work because supplier email account was compromised already. Availability wasnt affect, nothing go down, thats part of why it taking two weeks for noticing.
 
-Attack technique: Business email compromise. The attacker had access to the real inbox and modified an actual invoice thread rather than sending a fake email from a lookalike domain.
+Attack technique: Business email compromise. Attacker have access to the real inbox and modify a actual invoice thread, instead of sending fake email from lookalike domain.
 
 Preventive controls:
 
-MFA on email accounts on both sides.
-A rule requiring phone confirmation for any change to banking details.
-SPF/DKIM/DMARC to make spoofed or manipulated messages harder to pass off as legitimate.
+MFA on email accounts at both sides.
+Rule that is requiring phone confirmation for any change of banking details.
+SPF/DKIM/DMARC so spoofed or manipulated messages is more harder to pass like legit.
+
 Damage-limitation controls:
 
-Requiring a second person to sign off on large or newly-changed payments.
-A known process for requesting a bank recall as soon as fraud is suspected.
-Regular check-ins with suppliers on outstanding invoices so gaps don't sit for two weeks.
+Requiring second person for sign off large or newly-changed payments.
+A known process for ask bank recall soon as fraud are suspected.
+Regular check-ins with suppliers about outstanding invoices so gaps dont sitting for two weeks.
