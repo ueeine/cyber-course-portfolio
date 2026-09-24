@@ -195,7 +195,5 @@ A /26 fits up to 62 hosts, so yes it would technically work for everyone, but it
 - 2001:0df8:23f2:0000:0000:0000:0000:0f11 → 2001:df8:23f2::f11
 - 2001:0000:00d0:00f2:0000:0000:0000:0f11 → 2001:0:d0:f2::f11
 - fe80:0000:0000:0000:0000:0000:0000:0001 → fe80::1
+  
 
-### 6.3 - A conceptual question
-
-We need IPv6 because we basically ran out of IPv4 addresses. With smartphones, laptops, and smart home devices, there are just way too many things on the internet now for the ~4 billion IPv4 addresses. IPv6 uses a 128-bit address space, which is so huge that we can give every single device its own public IP and finally stop relying on workarounds like NAT.
