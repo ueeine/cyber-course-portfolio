@@ -1,6 +1,6 @@
 # Subnetting Basics Assignment
 
-## Task 1 - Binary ↔ decimal for a single octet
+## Binary ↔ decimal for a single octet
 
 ### 1.1 - Decimal to binary
 
@@ -37,7 +37,7 @@ Reverse:
 - 11000000.10101000.00000001.00000001 → 192.168.1.1
 - 00001010.00001010.00000000.01001011 → 10.10.0.75
 
-## Task 2 - Recognize the class and CIDR
+##  Recognize the class and CIDR
 
 ### 2.1 - What class is it?
 
@@ -68,7 +68,7 @@ Reverse:
 | B | /16 | 16,384 nets | 65,534 hosts |
 | C | /24 | 2,097,152 nets | 254 hosts |
 
-## Task 3 - The five key values
+##  The five key values
 
 ### 3.1 - 172.16.0.0/16
 - mask: 255.255.0.0
@@ -110,7 +110,7 @@ Reverse:
 - host range end: 192.168.100.254
 - broadcast: 192.168.100.255
 
-## Task 4 - Which subnet does this host belong to?
+##  Which subnet does this host belong to?
 
 ### 4.1 - 10.10.0.75/26
 - Network address: 10.10.0.64
@@ -132,7 +132,7 @@ Reverse:
 - Broadcast: 10.0.0.3
 - Valid host?: No, it's the network address itself so you can't assign it to a device.
 
-## Task 5 - Slicing up a /24
+##  Slicing up a /24
 
 ### 5.1 - Four equal /26 subnets
 
@@ -179,7 +179,7 @@ A /26 fits up to 62 hosts, so yes it would technically work for everyone, but it
 - Dept C (10 hosts): /28 (fits 14)
 - Dept D (2 hosts): /30 (fits exactly 2)
 
-## Task 6 - IPv6, briefly
+##  IPv6, briefly
 
 ### 6.1 - Hex ↔ decimal ↔ binary
 
