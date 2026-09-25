@@ -1,20 +1,25 @@
-1. Cloud in your own words
-Ok so imagine you don't own a car, you just use one of those car-sharing apps whenever you need to drive somewhere. That's basically cloud. You're paying to use someone else's stuff (in this case, computers and storage) whenever you need it, instead of owning it yourself. You don't own anything, you're just paying for access.
-
-2. Traditional → Cloud → Containers
-The whole thing is just "stop wasting resources" at every stage. Back in the day one server ran one app, huge waste. Virtualization let one server act like several at once. Cloud took that idea and let companies rent it instead of buying the box. Containers are even lighter than a virtual machine, so apps move around easier without dragging a whole operating system with them.
-
-3. Deployment vs Service models
-Deployment models = where it physically lives, your own place vs rented vs a mix. Service models = how much work you gotta do yourself. IaaS you rent the bare servers and set everything up yourself. PaaS the platform's ready, you just drop your app in. SaaS it's fully built, you just log in. Spotify's a good example, public cloud plus SaaS, you never think about servers, you just press play.
-
-4. Shared Responsibility Model
-Basically moving to cloud doesn't mean security becomes someone else's job. The vendor handles the physical servers and data centers, but you still gotta handle your own accounts, permissions, and data no matter what. Real example: the Capital One breach in 2019, a misconfigured firewall setting on their AWS setup let a hacker get into millions of customer records, that was Capital One's mistake, not Amazon's.
-
-5. Why orgs still hesitate
-One reason is legal stuff, like healthcare data under HIPAA or GDPR here in the EU, where certain data has to stay put and can't just go to any random cloud provider. Completely different reason: cost getting unpredictable, cloud bills can spike out of nowhere depending on usage, so some companies keep stuff on their own hardware just to keep costs steady and predictable.
-
-6. Cloud in an entry-level job
-A network tech might get called because a company's VoIP phone system (which runs through the cloud) suddenly drops calls, and they gotta figure out if it's their local network or the provider's side. Or a helpdesk person gets a ticket that someone's Google Workspace account got locked after too many failed logins and they need to walk them through resetting it.
-
-7. Personal takeaway
-Cloud isn't some magic internet thing, it's literally just somebody's giant warehouse full of servers. That's honestly gonna make me pay more attention to where my own photos and files actually get backed up, instead of just assuming it's handled because it says "cloud" somewhere.
+1) Cloud in simple terms is like renting a washing machine at a laundromat instead of
+buying one. You use powerful computers owned by a big company over the internet
+and pay for only what you use no hardware to buy maintain or fix yourself.
+2) Each stage fixes the waste of the one before it for example traditional IT one app per
+physical server and lots of wasted capacity. Virtualization multiple virtual machines
+share one server. Cloud:rent that capacity from someone else instead of owning the
+hardware.Containers:skiip the full operating system just package the app itself
+making things faster and lighter.
+3) Deployment models answer questions like where does it live and who owns it.
+Service models answer questions like how much does the vendor manage for me.
+Gmail is public clouds + Saas which runs on googles shared servers and we just use
+the finished product.
+4) The vendor secures the underlying infrastructure and you’re always responsible for
+your own data and configuration no matter which service model you use. Cloud
+doesnt remove the security job it just changes what part the user is responsible for.
+For example ALteryx exposed 120M households data because they left an AWSS3
+misconfigured as public.
+5) Data residency as GDPR requires knowing exactly where dat physically sits which
+public cloud can complicate.Secondly vendor lock in once deppely tied to ones
+providers tool switching later gets expensive and painful so some stay hybrid on
+purpose.
+6) A user can’t log inot micrsoft 365 you have to troubleshoot whether its password MFa
+without managing the cloud yourself and secondly you get an alert about a
+suspicious sign in to a cloud account lock it reset the password and chekc what was
+accessed all without touching the physical hardware.
