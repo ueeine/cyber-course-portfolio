@@ -21,5 +21,5 @@ providers tool switching later gets expensive and painful so some stay hybrid on
 purpose.
 6) A user can’t log inot micrsoft 365 you have to troubleshoot whether its password MFa
 without managing the cloud yourself and secondly you get an alert about a
-suspicious sign in to a cloud account lock it reset the password and chekc what was
+suspicious sign in to a cloud account lock it reset the password and check what was
 accessed all without touching the physical hardware.
