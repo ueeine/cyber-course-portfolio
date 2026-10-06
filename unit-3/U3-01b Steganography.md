@@ -99,7 +99,7 @@ binwalk cat.jpg
 ```
 <img width="742" height="619" alt="image" src="https://github.com/user-attachments/assets/a037a162-8b7d-4d6e-8954-4028ca1f9321" />
 
-next is task
+next task
 
 file TechNova_Solutions.xlsx
 
