@@ -98,3 +98,25 @@ exiftool cat.jpg
 binwalk cat.jpg
 ```
 <img width="742" height="619" alt="image" src="https://github.com/user-attachments/assets/a037a162-8b7d-4d6e-8954-4028ca1f9321" />
+
+next is task
+
+file TechNova_Solutions.xlsx
+
+<img width="428" height="65" alt="image" src="https://github.com/user-attachments/assets/342017f1-dea5-4fd2-b0b9-f38a12e9a169" />
+
+i made cover audio file using espeak tool
+<img width="1260" height="245" alt="image" src="https://github.com/user-attachments/assets/93bbf82a-6a22-47fc-b88d-6f79e750c6f2" />
+
+then i embedded the spreadsheet
+<img width="799" height="139" alt="image" src="https://github.com/user-attachments/assets/a33c7b71-5742-43fd-88cb-314b7c459095" />
+
+i checked the embedded data to see if its there
+
+<img width="668" height="129" alt="image" src="https://github.com/user-attachments/assets/ed93fb80-8059-4ea2-9c19-01594ee5a387" />
+
+then i extracted the spreadsheet back
+<img width="833" height="108" alt="image" src="https://github.com/user-attachments/assets/bd85d3a4-6eeb-4ba5-be6e-841c14b0273f" />
+
+i checked the recovered file that it matches the original exactly
+<img width="808" height="503" alt="image" src="https://github.com/user-attachments/assets/f36b6f73-ce96-4ff4-86e8-76fe2f9c2e5a" />
